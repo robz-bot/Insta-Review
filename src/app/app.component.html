@@ -1,0 +1,49 @@
+<!-- <router-outlet></router-outlet> -->
+<div class="float-container">
+  <div class="float-child">
+    <div class="green ">
+
+      <div class="row">
+        <div class="col-lg-4 my-3"*ngFor="let item of profileList; let i = index">
+          <div class="card">
+            <img
+            style="height: 120px;cursor: pointer;"
+              src="{{ item.Image }}"
+              class="card-img-top"
+              alt="image {{ i + 1 }}"
+              (click)="showPreview(item)"
+              title="Click Image to preview"
+            />
+            <div class="card-body">
+              <a href="javascript:void(0)" class="btn" (click)="increaseLike(item)"
+                >
+                  <i class="bi bi-heart" ></i>
+                {{ item.likes }}</a
+              >
+              <p class="card-text"><small class="text-muted">{{
+                item.timestamp | date: "short"
+              }}</small></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="blue ">
+      <p *ngIf="showRightPreview==0" class="text-center my-5" >Click Image to see preview</p>
+      <div class="card mb-3 my-4" *ngIf="showRightPreview==1">
+        <img src="{{singlePreview.Image}}" class="card-img-top cursor" alt="..." style="height: 430px; ">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-heart"></i> {{ singlePreview.likes }}</h5>
+          <p class="card-text"><small class="text-muted">{{
+            singlePreview.timestamp | date: "short"
+          }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
